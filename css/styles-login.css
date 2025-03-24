@@ -13,6 +13,19 @@ body{
   background: white;
 }
 
+.video-container {
+    height: 530px; /* Match wrapper height */
+    width: auto; /* Allow width to adjust based on video ratio */
+    margin-right: 20px; /* Space between video and form */
+  }
+  
+  .video-container video {
+    height: 100%; 
+    width: auto; /* Let width adjust to maintain video ratio */
+    object-fit: contain; 
+    border-radius: 6px;
+  }
+
 .wrapper{
   position: relative;
   max-width: 430px;
@@ -93,4 +106,12 @@ form .text h3 a{
 }
 form .text h3 a:hover{
   text-decoration: underline;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 0 20px; /* Add some padding on mobile */
 }
