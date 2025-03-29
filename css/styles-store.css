@@ -1,6 +1,7 @@
-/* Original CSS from styles-store.css */
+/* Original CSS with fixes for carousel navigation buttons */
 .container-fluid {
     position: relative;
+    margin-top: 20px;
 }
 
 #pokemonStoreCarousel {
@@ -27,59 +28,27 @@
 .card-img-top {
     height: 250px;
     width: 100%;
-    object-fit: contain; /* Changed from 'cover' to 'contain' */
+    object-fit: contain;
     background-color: lightgray;
-    padding: 10px; /* Added padding to reduce zoom effect */
+    background-image: url("../assets/background-card.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-    position: absolute;
-    top: 60%; /* Lowered from 50% to 60% */
-    transform: translateY(-50%);
-    width: 5%;
-    height: 50px;
-    z-index: 1000;
-}
-
-.carousel-control-prev {
-    left: -50px;
-}
-
-.carousel-control-next {
-    right: -50px;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
-
-.container-fluid {
-    margin-top: 20px; /* Optional: adds a little extra space */
-}
-
-.btn-primary {
-    background-color: yellow;
-    border-color: blue;
-    color: blue;
-}
-
-/* New CSS for fixing the first carousel */
-/* Container for first carousel to add margins */
+/* ORIGINAL FIRST CAROUSEL STYLING PRESERVED */
 #carouselExampleDark {
     max-width: 80%;
     margin: 0 auto;
+    position: relative;
 }
 
 #carouselExampleDark .carousel-item img {
-    height: 500px; /* Increased height */
+    height: 500px;
     width: 100%;
-    object-fit: cover; /* This makes images cover the area without distortion */
-    object-position: center; /* Centers the image */
+    object-fit: cover;
+    object-position: center;
 }
 
 #carouselExampleDark .carousel-caption {
@@ -99,30 +68,79 @@
     color: white;
 }
 
-/* Makes the carousel navigation buttons more visible */
-#carouselExampleDark .carousel-control-prev-icon,
-#carouselExampleDark .carousel-control-next-icon {
-    background-color: rgba(0,0,0,0.7);
-    padding: 20px;
-}
-
-/* Apply consistent styling to all carousels */
-#coinsCarousel .carousel-control-prev,
-#coinsCarousel .carousel-control-next {
-    position: absolute;
-    top: 60%;
+/* Preserve the original first carousel navigation button positioning */
+#carouselExampleDark .carousel-control-prev,
+#carouselExampleDark .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    top: 50%;
     transform: translateY(-50%);
-    width: 5%;
-    height: 50px;
-    z-index: 1000;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#coinsCarousel .carousel-control-prev {
+#carouselExampleDark .carousel-control-prev {
     left: -50px;
 }
 
-#coinsCarousel .carousel-control-next {
+#carouselExampleDark .carousel-control-next {
     right: -50px;
+}
+
+#carouselExampleDark .carousel-control-prev-icon,
+#carouselExampleDark .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+}
+
+/* FIXES FOR CAROUSEL 2 AND 3 ONLY */
+#pokemonStoreCarousel, #coinsCarousel {
+    position: relative;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+#pokemonStoreCarousel .carousel-control-prev,
+#pokemonStoreCarousel .carousel-control-next,
+#coinsCarousel .carousel-control-prev,
+#coinsCarousel .carousel-control-next {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    opacity: 0.9;
+    z-index: 10;
+}
+
+#pokemonStoreCarousel .carousel-control-prev,
+#coinsCarousel .carousel-control-prev {
+    left: 15px;
+}
+
+#pokemonStoreCarousel .carousel-control-next,
+#coinsCarousel .carousel-control-next {
+    right: 15px;
+}
+
+#pokemonStoreCarousel .carousel-control-prev-icon,
+#pokemonStoreCarousel .carousel-control-next-icon,
+#coinsCarousel .carousel-control-prev-icon,
+#coinsCarousel .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-primary {
+    background-color: white;
+    border-color: rgb(0, 0, 0);
+    color: #000000;
 }
 
 /* Daily Bundles section styling */
@@ -160,12 +178,31 @@
     }
     
     #carouselExampleDark .carousel-item img {
-        height: 300px; /* Smaller height on mobile */
+        height: 300px;
     }
     
-    .carousel-control-prev,
-    .carousel-control-next {
-        display: none; /* Hide nav buttons on mobile or adjust positioning */
+    /* Adjust first carousel controls for mobile */
+    #carouselExampleDark .carousel-control-prev,
+    #carouselExampleDark .carousel-control-next {
+        width: 30px;
+        height: 30px;
+        background-color: rgba(0,0,0,0.5);
+    }
+    
+    #carouselExampleDark .carousel-control-prev {
+        left: 10px;
+    }
+    
+    #carouselExampleDark .carousel-control-next {
+        right: 10px;
+    }
+    
+    /* Adjust carousel 2 and 3 controls for mobile */
+    #pokemonStoreCarousel .carousel-control-prev,
+    #pokemonStoreCarousel .carousel-control-next,
+    #coinsCarousel .carousel-control-prev,
+    #coinsCarousel .carousel-control-next {
+        background-color: rgba(0,0,0,0.7);
     }
     
     .daily-bundles-container {
@@ -176,4 +213,24 @@
     .daily-bundles-container .card {
         margin-bottom: 1rem;
     }
+}
+
+/* Make modal background transparent */
+.modal-content {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+/* Center the card inside the modal */
+.modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Remove modal header/footer (optional) */
+.modal-header, .modal-footer {
+    display: none;
 }
