@@ -25,8 +25,7 @@ body {
     line-height: 1.6;
 }
 
-
-.box {
+.profile-box {
     background-color: white;
     border-radius: 12px;
     padding: 1.5rem;
@@ -36,7 +35,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.box:hover {
+.profile-box:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-3px);
 }
@@ -56,7 +55,6 @@ body {
     font-weight: 600;
     letter-spacing: 0.5px;
 }
-
 
 .navbar {
     background: linear-gradient(135deg, var(--porkchop-brown), var(--porkchop-dark));
@@ -134,12 +132,17 @@ body {
     border-radius: 3px;
 }
 
-
 .profile-container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 2rem;
     animation: fadeIn 0.5s ease-out;
+    width: 1000px;
+    border-radius: 25px;
+    border: 10px solid green;
+    padding: 50px;
+    margin-top: auto;
+    box-sizing: border-box;
 }
 
 @keyframes fadeIn {
@@ -162,6 +165,8 @@ body {
     background: linear-gradient(45deg, var(--porkchop-orange), var(--porkchop-yellow));
     padding: 5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-top: -130PX;
+   
 }
 
 .profile-avatar img {
@@ -212,7 +217,6 @@ body {
     display: inline-block;
     box-shadow: var(--shadow-sm);
 }
-
 
 .profile-details {
     position: relative;
@@ -266,69 +270,6 @@ body {
     flex: 1;
     color: var(--dark-gray);
 }
-
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.stat-card {
-    position: relative;
-    text-align: center;
-    padding: 1.5rem;
-    border-radius: 10px;
-    background: white;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    overflow: hidden;
-    z-index: 1;
-}
-
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, var(--porkchop-orange), var(--porkchop-yellow));
-}
-
-.stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.stat-value {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--porkchop-orange);
-    margin-bottom: 0.5rem;
-    position: relative;
-    display: inline-block;
-}
-
-.stat-value::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 3px;
-    background-color: var(--porkchop-yellow);
-    border-radius: 3px;
-}
-
-.stat-label {
-    color: var(--dark-gray);
-    font-size: 0.95rem;
-    font-weight: 500;
-}
-
 
 .purchase-history {
     position: relative;
@@ -390,12 +331,11 @@ body {
     font-size: 1.1rem;
 }
 
-
 .btn-view-all {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(to right, var(--porkchop-orange), #FF6B00);
+    background: linear-gradient(to right, var(--porkchop-yellow), #0d6debae);
     color: white;
     padding: 0.8rem 1.75rem;
     border-radius: 30px;
@@ -409,9 +349,8 @@ body {
 .btn-view-all:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
-    background: linear-gradient(to right, #FF6B00, var(--porkchop-orange));
+    background: linear-gradient(to right, #0d6debae, var(--porkchop-orange));
 }
-
 
 .footer {
     background: linear-gradient(135deg, var(--porkchop-dark), var(--porkchop-brown));
@@ -506,4 +445,29 @@ body {
     .purchase-price {
         align-self: flex-end;
     }
-}   
+
+    .profile-section-box {
+        background-color: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        border: 1px solid #eaeaea;
+        transition: all 0.3s ease;
+        
+    }
+    
+    .profile-section-box:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+    
+    .profile-section-box h2 {
+        color: var(--porkchop-orange);
+        font-size: 1.4rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--porkchop-yellow);
+    }
+    
+}
