@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav button.nav-1 {
+    margin: 0 5px;
+    background: none;
+    border: none;
+    color: #0c2b46;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nav button.nav-2 {
+    background-color: #52E3C2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+main {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p.description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.payment-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.bundle-summary {
+    width: 300px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: left;
+    margin: 0 auto;
+}
+
+.payment-method {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.payment-option {
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.payment-option:hover {
+    border-color: #3498db;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.pay-button {
+    background-color: #ffcb05;
+    color: #2a75bb;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.pay-button:hover {
+    background-color: #f2b807;
+}
+
+.longer {
+    height: 10000px;
+}
+.nav button {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition:  0.3s, color 0.3s;
+}
