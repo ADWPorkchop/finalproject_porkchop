@@ -1,3 +1,13 @@
-.longer {
-    height: 10000px;
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.media-container {
+    height: 530px; /* Match wrapper height */
+    width: auto; /* Allow width to adjust based on video ratio */
+    margin-right: 20px; /* Space between video and form */
 }
