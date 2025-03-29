@@ -1,3 +1,4 @@
+/* Original CSS from styles-store.css */
 .container-fluid {
     position: relative;
 }
@@ -26,8 +27,9 @@
 .card-img-top {
     height: 250px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Changed from 'cover' to 'contain' */
     background-color: lightgray;
+    padding: 10px; /* Added padding to reduce zoom effect */
 }
 
 .carousel-control-prev,
@@ -66,3 +68,112 @@
     color: blue;
 }
 
+/* New CSS for fixing the first carousel */
+/* Container for first carousel to add margins */
+#carouselExampleDark {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#carouselExampleDark .carousel-item img {
+    height: 500px; /* Increased height */
+    width: 100%;
+    object-fit: cover; /* This makes images cover the area without distortion */
+    object-position: center; /* Centers the image */
+}
+
+#carouselExampleDark .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#carouselExampleDark .carousel-caption h5 {
+    color: white;
+    font-weight: bold;
+}
+
+#carouselExampleDark .carousel-caption p {
+    color: white;
+}
+
+/* Makes the carousel navigation buttons more visible */
+#carouselExampleDark .carousel-control-prev-icon,
+#carouselExampleDark .carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.7);
+    padding: 20px;
+}
+
+/* Apply consistent styling to all carousels */
+#coinsCarousel .carousel-control-prev,
+#coinsCarousel .carousel-control-next {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    width: 5%;
+    height: 50px;
+    z-index: 1000;
+}
+
+#coinsCarousel .carousel-control-prev {
+    left: -50px;
+}
+
+#coinsCarousel .carousel-control-next {
+    right: -50px;
+}
+
+/* Daily Bundles section styling */
+.daily-bundles-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+.daily-bundles-container .card {
+    margin: 0;
+}
+
+.daily-bundles-container .card-img-top {
+    object-fit: contain;
+    padding: 15px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    #carouselExampleDark {
+        max-width: 95%;
+    }
+    
+    #carouselExampleDark .carousel-item img {
+        height: 300px; /* Smaller height on mobile */
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none; /* Hide nav buttons on mobile or adjust positioning */
+    }
+    
+    .daily-bundles-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .daily-bundles-container .card {
+        margin-bottom: 1rem;
+    }
+}
