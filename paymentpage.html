@@ -1,0 +1,59 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Go Store - Payment</title>
+    <link rel="stylesheet" href="css/styles-header.css">
+    <link rel="stylesheet" href="css/styles-homepage.css">
+    <link rel="stylesheet" href="css/style-paymentpage.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="assets/Pokemon_Go.svg.png" alt="Pokémon Go Logo">
+            <span>Web Store</span>
+        </div>
+        <div class="nav">
+            <button class="nav-1" onclick="location.href='store.html';">Store</button>
+            <button class="nav-1" onclick="location.href='cart.html';">Cart</button>
+            <button class="nav-1" onclick="location.href='profile.html';">Profile</button>
+            <button class="nav-2" onclick="location.href='logout.html';">Logout</button>
+        </div>
+    </div>
+    <main>
+        <h1>Payment Page</h1>
+        <p class="description">Choose your preferred payment method and complete your purchase.</p>
+        <section class="payment-section">
+            <div class="bundle-summary">
+                <h2>Order Summary</h2>
+                <p>Starter Bundle - ₱59.00</p>
+                <p>Gym Battle Pack - ₱289.00</p>
+                <p class="total"><strong>Total: ₱348.00</strong></p>
+            </div>
+            <div class="payment-form">
+                <h2>Select Payment Method</h2>
+                <div class="payment-method">
+                    <label class="payment-option"><input type="radio" name="payment" value="gcash"><img src="/assets/gcash-logo-.png" alt="GCash" width="40"> GCash</label>
+                    <label class="payment-option"><input type="radio" name="payment" value="visa"><img src="/assets/visa-logo-.png" alt="Visa" width="40">Visa</label>
+                    <label class="payment-option"><input type="radio" name="payment" value="paypal"><img src="/assets/paypal-logo-.png" alt="PayPal" width="40">Paypal</label>
+                </div>
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
+
+                <label for="cardName">Name on Card</label>
+                <input type="text" id="cardName" placeholder="John Doe">
+
+                <label for="expiryDate">Expiry Date</label>
+                <input type="text" id="expiryDate" placeholder="MM/YY">
+
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="XXX">
+
+                <button class="pay-button">Pay Now</button>
+            </div>
+        </section>
+    </main>
+    <div class="longer"></div>
+</body>
+</html>
