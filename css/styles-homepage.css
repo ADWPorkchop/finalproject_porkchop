@@ -6,8 +6,19 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.media-container {
-    height: 530px; /* Match wrapper height */
-    width: auto; /* Allow width to adjust based on video ratio */
-    margin-right: 20px; /* Space between video and form */
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
 }
+
+.preview-event{
+    flex-direction: right;
+}
+
+.preview-store{
+    flex-direction: right;
+}
+
