@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,33 +27,57 @@
         <section class="payment-section">
             <div class="bundle-summary">
                 <h2>Order Summary</h2>
-                <p>Starter Bundle - ₱59.00</p>
-                <p>Gym Battle Pack - ₱289.00</p>
-                <p class="total"><strong>Total: ₱348.00</strong></p>
+                <p>Starter Bundle - ₱00.00</p>
+                <p>Gym Battle Pack - ₱00.00</p>
+                <p class="total"><strong>Total: ₱00.00</strong></p>
             </div>
             <div class="payment-form">
                 <h2>Select Payment Method</h2>
                 <div class="payment-method">
-                    <label class="payment-option"><input type="radio" name="payment" value="gcash"><img src="/assets/gcash-logo-.png" alt="GCash" width="40"> GCash</label>
-                    <label class="payment-option"><input type="radio" name="payment" value="visa"><img src="/assets/visa-logo-.png" alt="Visa" width="40">Visa</label>
-                    <label class="payment-option"><input type="radio" name="payment" value="paypal"><img src="/assets/paypal-logo-.png" alt="PayPal" width="40">Paypal</label>
+                    <label class="payment-option">
+                        <div class="payment-input">
+                            <input type="radio" name="payment" value="gcash">
+                            <img src="assets/gcash-logo-.png" alt="GCash">
+                        </div>
+                        GCash
+                    </label>
+                    <label class="payment-option">
+                        <div class="payment-input">
+                            <input type="radio" name="payment" value="visa">
+                            <img src="assets/visa-logo-.png" alt="Visa">
+                        </div>
+                        Visa
+                    </label>
+                    <label class="payment-option">
+                        <div class="payment-input">
+                            <input type="radio" name="payment" value="paypal">
+                            <img src="assets/paypal-logo-.png" alt="PayPal">
+                        </div>
+                        PayPal
+                    </label>
+                </div>                
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
                 </div>
-                <label for="cardNumber">Card Number</label>
-                <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
-
-                <label for="cardName">Name on Card</label>
-                <input type="text" id="cardName" placeholder="John Doe">
-
-                <label for="expiryDate">Expiry Date</label>
-                <input type="text" id="expiryDate" placeholder="MM/YY">
-
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" placeholder="XXX">
-
+                <div class="form-group">
+                    <label for="cardName">Name on Card</label>
+                    <input type="text" id="cardName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">Expiry Date</label>
+                    <input type="text" id="expiryDate" placeholder="MM/YY">
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="XXX">
+                </div>
                 <button class="pay-button">Pay Now</button>
             </div>
         </section>
     </main>
-    <div class="longer"></div>
+    <footer class="footer">
+        <p>© 2023 Pokémon Go Web Store. All rights reserved.</p>
+    </footer>
 </body>
 </html>
