@@ -139,7 +139,7 @@ body {
     animation: fadeIn 0.5s ease-out;
     width: 1000px;
     border-radius: 25px;
-    border: 10px solid green;
+    border: 10px solid #0c4161;
     padding: 50px;
     margin-top: auto;
     box-sizing: border-box;
@@ -158,14 +158,14 @@ body {
 
 .profile-avatar {
     position: relative;
-    width: 140px;
-    height: 140px;
+    width: 240px;
+    height: 240px;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--porkchop-orange), var(--porkchop-yellow));
+    background: linear-gradient(45deg, var(--porkchop-blue), var(--porkchop-blue));
     padding: 5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    margin-top: -130PX;
+    margin-top: -180PX;
    
 }
 
@@ -175,6 +175,10 @@ body {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid white;
+}
+
+.longer{
+    height: 300px;
 }
 
 .btn-edit {
@@ -335,7 +339,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(to right, var(--porkchop-yellow), #0d6debae);
+    background: linear-gradient(to right, var(--porkchop-blue), #0c4161);
     color: white;
     padding: 0.8rem 1.75rem;
     border-radius: 30px;
@@ -349,7 +353,7 @@ body {
 .btn-view-all:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
-    background: linear-gradient(to right, #0d6debae, var(--porkchop-orange));
+    background: linear-gradient(to right, #0c4161, var(--porkchop-blue));
 }
 
 .footer {
