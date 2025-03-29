@@ -1,24 +1,108 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-body{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
     background: white;
+    padding-top: 30px;
+}
+ 
+.container {
+    align-items: center;
+    max-width: 90%;
+    margin: auto 5%;
+    border: solid 4px #52E3C2;
+    background: #c9e0db;
+    border-radius: 10px;
 }
 
-.preview-event{
-    flex-direction: right;
+.carousel-inner img {
+    height: 500px;  
+    object-fit: cover;
 }
 
-.preview-store{
-    flex-direction: right;
+.preview-event {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 50px 20px;
+    background: #f8f9fa;
 }
 
+.preview-event .media-container video {
+    height: auto;
+    max-width: 700px;
+    border-radius: 10px;
+}
+
+.preview-event p {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+.preview-event .text-container img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+.preview-event .text-container .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 25px;
+    background: linear-gradient(to right, #ed0606, #0e07e5);
+    border: none;
+}
+
+.preview-event .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.preview-store {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 50px 20px;
+    background: #f8f9fa;
+}
+
+.preview-store .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px; 
+}
+
+.preview-store .text-container {
+    max-width: 80%;
+    font-size: 18px;
+    line-height: 1.6; /* Adjust line height for better readability */
+}
+
+.preview-store .text-container .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 25px;
+    background: linear-gradient(to right, #ed0606, #0e07e5);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.preview-store .media-container img {
+    width: 300px;
+    border-radius: 10px;
+}
