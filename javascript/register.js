@@ -23,10 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }, { once: true });
         });
     }
+    
+    initRegistration();
 });
 
 function initRegistration() {
     const registrationForm = document.querySelector('form');
+    
+    if (!registrationForm) return;
     
     // Generate random player ID
     function generatePlayerId() {
@@ -66,6 +70,13 @@ function initRegistration() {
             alert("Please select a gender.");
             return;
         }
+        
+        // Check if username already exists
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        if (users.some(user => user.username === username)) {
+            alert("Username already exists. Please choose a different one.");
+            return;
+        }
 
         // Create user object
         const user = {
@@ -84,17 +95,16 @@ function initRegistration() {
         };
 
         // Save user to localStorage
-        let users = JSON.parse(localStorage.getItem('users')) || [];
         users.push(user);
         localStorage.setItem('users', JSON.stringify(users));
 
         // Set current user
         localStorage.setItem('currentUser', JSON.stringify(user));
 
-        // Redirect to profile page
+        // Alert success
+        alert("Registration successful! Your Player ID is: " + playerId);
+
+        // Redirect to login page
         window.location.href = 'index.html';
     });
 }
-
-// Initialize registration function if form exists
-if (document.querySelector('form')) initRegistration();
