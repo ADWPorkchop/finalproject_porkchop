@@ -1,5 +1,5 @@
 :root {
-    --porkchop-orange: #FF8C00;
+    --porkchop-blue: #FF8C00;
     --porkchop-brown: #8B4513;
     --porkchop-yellow: #FFD700;
     --porkchop-blue: #4169E1;
@@ -50,7 +50,7 @@ body {
 }
 
 .box-title {
-    color: var(--porkchop-orange);
+    color: var(--porkchop-blue);
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -205,7 +205,7 @@ body {
 }
 
 #username {
-    color: var(--porkchop-orange);
+    color: var(--porkchop-blue);
     margin-bottom: 0.5rem;
     font-size: 1.8rem;
     font-weight: 700;
@@ -258,14 +258,14 @@ body {
 .detail-label {
     font-weight: 600;
     width: 150px;
-    color: var(--porkchop-brown);
+    color: var(--porkchop-blue);
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .detail-label i {
-    color: var(--porkchop-orange);
+    color: var(--porkchop-blue);
     width: 20px;
     text-align: center;
 }
@@ -289,7 +289,7 @@ body {
     border-radius: 8px;
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
-    border-left: 4px solid var(--porkchop-orange);
+    border-left: 4px solid var(--porkchop-blue);
 }
 
 .purchase-item:hover {
@@ -305,7 +305,7 @@ body {
 
 .purchase-icon {
     font-size: 1.6rem;
-    color: var(--porkchop-orange);
+    color: var(--porkchop-blue);
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -331,7 +331,7 @@ body {
 
 .purchase-price {
     font-weight: 700;
-    color: var(--porkchop-orange);
+    color: var(--porkchop-blue);
     font-size: 1.1rem;
 }
 
@@ -346,19 +346,19 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
-    box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     margin-top: 1rem;
 }
 
 .btn-view-all:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+    box-shadow: black; 
     background: linear-gradient(to right, #0c4161, var(--porkchop-blue));
 }
 
 .footer {
-    background: linear-gradient(135deg, var(--porkchop-dark), var(--porkchop-brown));
-    color: white;
+    background: linear-gradient(135deg, var(--porkchop-white), var(--porkchop-white));
+    color: rgb(0, 0, 0);
     padding: 2.5rem 0 1.5rem;
     margin-top: 3rem;
 }
@@ -382,7 +382,6 @@ body {
 
 .footer-logo img {
     height: 35px;
-    filter: brightness(0) invert(1);
 }
 
 .footer-logo span {
@@ -467,7 +466,7 @@ body {
     }
     
     .profile-section-box h2 {
-        color: var(--porkchop-orange);
+        color: var(--porkchop-blue);
         font-size: 1.4rem;
         margin-bottom: 1.25rem;
         padding-bottom: 0.75rem;
