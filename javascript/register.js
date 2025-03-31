@@ -67,9 +67,7 @@ function initRegistration() {
             password,
             playerId: generatePlayerId(),
             gender: gender.value,
-            joinDate: new Date().toISOString(), // Save in ISO format
-            stats: { pokemonCaught: 0, gymsDefended: 0, itemsPurchased: 0, totalSpent: 0 },
-            avatar: "images/default-avatar.png"
+            joinDate: new Date().toISOString(),          avatar: "images/default-avatar.png"
         };
 
         users.push(user);
