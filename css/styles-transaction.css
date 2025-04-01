@@ -1,5 +1,21 @@
 /* styles-transaction.css */
-/* Building upon the profile styles with transaction-specific elements */
+/* Base styles for transaction history page */
+
+/* Main container styles */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
+}
+
+.transaction-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 20px;
+}
 
 /* Transactions Header */
 .transactions-header h1 {
@@ -193,8 +209,138 @@
     background-color: #3a7bc8;
 }
 
+/* Footer Styles */
+.footer {
+    background: linear-gradient(135deg, var(--porkchop-white), var(--porkchop-white));
+    color: rgb(0, 0, 0);
+    padding: 2.5rem 0 1.5rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-logo img {
+    height: 35px;
+}
+
+.footer-logo span {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.footer-disclaimer {
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Purchase History Styles */
+.purchase-history {
+    position: relative;
+}
+
+.purchase-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-left: 4px solid var(--porkchop-blue);
+}
+
+.purchase-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.purchase-info {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.purchase-icon {
+    font-size: 1.6rem;
+    color: var(--porkchop-blue);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(255, 140, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.purchase-details h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: var(--dark-gray);
+}
+
+.purchase-date {
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.purchase-price {
+    font-weight: 700;
+    color: var(--porkchop-blue);
+    font-size: 1.1rem;
+}
+
+/* Button Styles */
+.btn-view-all {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-view-all:hover {
+    background-color: #3a7bc8;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    .main-container {
+        padding: 15px;
+    }
+    
+    .transaction-container {
+        padding: 20px;
+    }
+    
     .transactions-filter {
         flex-direction: column;
         gap: 15px;
@@ -227,21 +373,31 @@
     }
 }
 
-/* Matching profile page button styles */
-.btn-view-all {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4a90e2;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-view-all:hover {
-    background-color: #3a7bc8;
+@media (max-width: 576px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .purchase-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .purchase-price {
+        align-self: flex-end;
+    }
+    
+    .transactions-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .footer-content {
+        padding: 0 1rem;
+    }
 }
