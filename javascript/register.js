@@ -43,6 +43,7 @@ function initRegistration() {
         const password = document.querySelector('input[placeholder="Create password"]').value;
         const confirmPassword = document.querySelector('input[placeholder="Confirm password"]').value;
         const gender = document.querySelector('input[name="gender"]:checked');
+        
 
         if (!username || !email || !password || !confirmPassword || !gender) {
             alert("Please fill in all fields.");
@@ -67,12 +68,14 @@ function initRegistration() {
             password,
             playerId: generatePlayerId(),
             gender: gender.value,
-            joinDate: new Date().toISOString(),          avatar: "images/default-avatar.png"
+            joinDate: new Date().toISOString(),          
+            avatar: "images/default-avatar.png"
         };
 
         users.push(user);
         localStorage.setItem('users', JSON.stringify(users));
         localStorage.setItem('currentUser', JSON.stringify(user));
+        
 
         alert("Registration successful! Your Player ID: " + user.playerId);
         window.location.href = 'index.html'; // Redirect to login page

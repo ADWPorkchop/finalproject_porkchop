@@ -19,6 +19,7 @@ function initProfile() {
     const genderEl = document.getElementById('profileGender');
     const joinDateEl = document.getElementById('joinDate');
     const editAvatarBtn = document.getElementById('editAvatarBtn');
+    const genderIcon = document.getElementById('genderIcon');
 
     // Display basic user info
     usernameEl.textContent = user.username?.toUpperCase() || 'POKÉTRAINER';
@@ -45,11 +46,17 @@ function initProfile() {
             }
             
             birthdayEl.textContent = displayDate;
-        } else {
-            birthdayEl.textContent = 'Not specified';
-        }
+        } 
     }
-
+// In your initProfile() function:
+if (user.gender) {
+    const gender = user.gender.toLowerCase();
+    genderIcon.className = `gender-icon fas ${
+        gender === 'female' ? 'fa-venus' : 'fa-mars'
+    }`;
+} else {
+    genderIcon.className = 'none';
+}
     // Helper function to parse multiple date formats
     function parseBirthday(dateValue) {
         if (!dateValue) return null;
