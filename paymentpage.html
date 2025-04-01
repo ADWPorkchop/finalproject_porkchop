@@ -51,7 +51,7 @@
                 <h2><i class="fas fa-credit-card"></i> PAYMENT METHOD</h2>
                 
                 <div class="payment-options">
-                    <label class="payment-option selected">
+                    <label class="payment-option">
                         <input type="radio" name="payment" value="gcash" checked>
                         <div class="payment-content">
                             <img src="assets/gcash-logo-.png" alt="GCash">
@@ -76,7 +76,8 @@
                     </label>
                 </div>
 
-                <div class="payment-details">
+                <!-- Updated Credit Card Form -->
+                <div class="credit-card-form">
                     <div class="form-group">
                         <label for="cardNumber">Card Number</label>
                         <div class="input-with-icon">
@@ -93,20 +94,21 @@
                         </div>
                     </div>
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="expiryDate">Expiry Date</label>
+                    <div class="card-details-row">
+                        <div class="card-details-col">
+                            <label for="expiryDate" class="card-details-label">Expiry Date</label>
                             <div class="input-with-icon">
                                 <i class="far fa-calendar-alt"></i>
-                                <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+                                <input type="text" id="expiryDate" class="card-details-input" placeholder="MM/YY" maxlength="5">
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="cvv">CVV</label>
+                        <div class="form-group"></div>
+                        <div class="card-details-col">
+                            <label for="cvv" class="card-details-label">CVV</label>
                             <div class="input-with-icon">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" id="cvv" placeholder="•••" maxlength="3">
+                                <input type="password" id="cvv" class="cvv-input" placeholder="•••" maxlength="3">
                             </div>
                         </div>
                     </div>
@@ -123,7 +125,7 @@
             </div>
         </div>
     </main>
-
+    
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
