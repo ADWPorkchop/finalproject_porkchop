@@ -1,70 +1,73 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-    const paymentOptions = document.querySelectorAll('.payment-option');
-    const payButton = document.querySelector('.pay-button');
-    const cardNumberInput = document.getElementById('cardNumber');
-    const cardNameInput = document.getElementById('cardName');
-    const expiryDateInput = document.getElementById('expiryDate');
-    const cvvInput = document.getElementById('cvv');
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const clearCartBtn = document.querySelector('.clear-cart-btn');
+    const totalElement = document.querySelector('.total h1');
+    const proceedButton = document.querySelector('.sep2 button');
 
-    // Highlight selected payment option
-    paymentOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            paymentOptions.forEach(opt => opt.classList.remove('selected'));
-            option.classList.add('selected');
-            option.querySelector('input[type="radio"]').checked = true;
-        });
-    });
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Payment form submission
-    payButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        const selectedPayment = document.querySelector('input[name="payment"]:checked');
+    function updateCartDisplay() {
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        if (cart.length === 0) {
+            document.querySelector('.empty-cart').style.display = 'block';
+        } else {
+            document.querySelector('.empty-cart').style.display = 'none';
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="item-image"><img src="${item.image}" alt="${item.name}"></div>
+                        <div class="item-details">
+                            <h3>${item.name}</h3>
+                            <p class="item-price">₱${item.price.toFixed(2)}</p>
+                        </div>
+                        <div class="item-quantity">
+                            <div class="quantity-btn decrease">-</div>
+                            <div class="quantity-value">${item.quantity}</div>
+                            <div class="quantity-btn increase">+</div>
+                        </div>
+                        <div class="item-total">₱${itemTotal.toFixed(2)}</div>
+                        <button class="remove-item">×</button>
+                    </div>`;
+            });
+        }
+        totalElement.textContent = `Total: ₱${total.toFixed(2)}`;
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
-        if (!selectedPayment) {
-            alert('Please select a payment method.');
-            return;
+    cartItemsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove-item')) {
+            const index = [...cartItemsContainer.children].indexOf(e.target.closest('.cart-item'));
+            cart.splice(index, 1);
+            updateCartDisplay();
         }
 
-        if (selectedPayment.value === 'visa') {
-            if (!validateCardDetails()) {
-                alert('Please enter valid card details.');
-                return;
+        if (e.target.classList.contains('increase')) {
+            const index = [...cartItemsContainer.children].indexOf(e.target.closest('.cart-item'));
+            cart[index].quantity += 1;
+            updateCartDisplay();
+        }
+
+        if (e.target.classList.contains('decrease')) {
+            const index = [...cartItemsContainer.children].indexOf(e.target.closest('.cart-item'));
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+                updateCartDisplay();
             }
         }
-
-        alert('Payment successful!');
-        window.location.href = 'transaction.html';
     });
 
-    // Validate card details
-    function validateCardDetails() {
-        const cardNumber = cardNumberInput.value.trim();
-        const cardName = cardNameInput.value.trim();
-        const expiryDate = expiryDateInput.value.trim();
-        const cvv = cvvInput.value.trim();
+    clearCartBtn.addEventListener('click', () => {
+        cart = [];
+        updateCartDisplay();
+    });
 
-        const cardNumberPattern = /^\d{16}$/;
-        const expiryPattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
-        const cvvPattern = /^\d{3}$/;
+    proceedButton.addEventListener('click', () => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.location.href = 'paymentpage.html';
+    });
 
-        if (!cardNumberPattern.test(cardNumber)) {
-            alert('Invalid card number. Please enter 16 digits.');
-            return false;
-        }
-        if (!cardName) {
-            alert('Please enter the name on the card.');
-            return false;
-        }
-        if (!expiryPattern.test(expiryDate)) {
-            alert('Invalid expiry date. Use MM/YY format.');
-            return false;
-        }
-        if (!cvvPattern.test(cvv)) {
-            alert('Invalid CVV. Please enter 3 digits.');
-            return false;
-        }
-
-        return true;
-    }
+    updateCartDisplay();
 });
