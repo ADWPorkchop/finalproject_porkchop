@@ -43,7 +43,9 @@ function initRegistration() {
         const password = document.querySelector('input[placeholder="Create password"]').value;
         const confirmPassword = document.querySelector('input[placeholder="Confirm password"]').value;
         const gender = document.querySelector('input[name="gender"]:checked');
-        
+        // Get birthday input if it exists (won't break if it doesn't)
+        const birthdayInput = document.querySelector('input[type="date"]');
+        const birthday = birthdayInput ? birthdayInput.value : null;
 
         if (!username || !email || !password || !confirmPassword || !gender) {
             alert("Please fill in all fields.");
@@ -69,7 +71,9 @@ function initRegistration() {
             playerId: generatePlayerId(),
             gender: gender.value,
             joinDate: new Date().toISOString(),          
-            avatar: "images/default-avatar.png"
+            avatar: "images/default-avatar.png",
+            // Add birthday if it exists, otherwise don't include the field
+            ...(birthday && { birthday })
         };
 
         users.push(user);
