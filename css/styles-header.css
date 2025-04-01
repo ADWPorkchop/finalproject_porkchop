@@ -1,3 +1,7 @@
+:root{
+    --transition: all 0.3s ease;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -73,4 +77,40 @@ body {
 
 .longer {
     height: 120px; /* Same height as the header */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    transform: scale(1.03);
+}
+
+.logo img {
+    height: 42px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.logo-text {
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {  
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

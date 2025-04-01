@@ -9,7 +9,6 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
-    --transition: all 0.3s ease;
 }
 
 * {
@@ -72,30 +71,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: var(--transition);
-}
-
-.logo:hover {
-    transform: scale(1.03);
-}
-
-.logo img {
-    height: 42px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-}
-
-.logo-text {
-    color: white;
-    font-weight: bold;
-    font-size: 1.3rem;
-    letter-spacing: 1.5px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .nav-links {
