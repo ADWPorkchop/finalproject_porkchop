@@ -138,9 +138,11 @@
 }
 
 .btn-primary {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-color: rgb(0, 0, 0);
     color: #000000;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* Daily Bundles section styling */
