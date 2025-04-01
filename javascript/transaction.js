@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const transactionsList = document.getElementById('transactionsList');
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
+    // Hide the empty state if there are transactions
+    toggleEmptyState(transactions);
+
     if (transactions.length === 0) {
         transactionsList.innerHTML = `
             <div class="empty-state">
@@ -47,3 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
         transactionsList.innerHTML += transactionHTML;
     });
 });
+
+/**
+ * Toggles the visibility of the empty state based on transaction history.
+ * @param {Array} transactions - The list of transactions.
+ */
+function toggleEmptyState(transactions) {
+    const emptyStateElement = document.querySelector('.empty-state');
+    if (emptyStateElement) {
+        if (transactions.length > 0) {
+            emptyStateElement.style.display = 'none';
+        } else {
+            emptyStateElement.style.display = 'block';
+        }
+    }
+}

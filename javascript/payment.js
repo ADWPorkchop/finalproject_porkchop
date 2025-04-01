@@ -26,7 +26,7 @@ function loadPaymentItems() {
     const paymentCart = JSON.parse(localStorage.getItem('paymentCart')) || [];
     const orderTotalElement = document.querySelector('.order-total span:last-child');
 
-    // Check if the container exists
+    // Check if the container existss
     if (!orderItemsContainer) {
         console.error('Error: .order-items container not found in the DOM.');
         return;
@@ -54,7 +54,7 @@ function loadPaymentItems() {
             subtotal += itemTotal;
 
             const itemElement = document.createElement('div');
-            itemElement.className = 'order-items';
+            itemElement.className = 'order-item';
             itemElement.innerHTML = `
                 <span>${item.quantity} × ${item.title}</span>
                 <span>₱${itemTotal.toFixed(2)}</span>
