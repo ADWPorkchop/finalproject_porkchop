@@ -22,9 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function loadPaymentItems() {
-    const orderItemsContainer = document.querySelector('.order-item');
+    const orderItemsContainer = document.querySelector('.order-items');
     const paymentCart = JSON.parse(localStorage.getItem('paymentCart')) || [];
     const orderTotalElement = document.querySelector('.order-total span:last-child');
+
+    // Check if the container exists
+    if (!orderItemsContainer) {
+        console.error('Error: .order-items container not found in the DOM.');
+        return;
+    }
 
     // Clear the container
     orderItemsContainer.innerHTML = '';
@@ -48,7 +54,7 @@ function loadPaymentItems() {
             subtotal += itemTotal;
 
             const itemElement = document.createElement('div');
-            itemElement.className = 'order-item';
+            itemElement.className = 'order-items';
             itemElement.innerHTML = `
                 <span>${item.quantity} × ${item.title}</span>
                 <span>₱${itemTotal.toFixed(2)}</span>
