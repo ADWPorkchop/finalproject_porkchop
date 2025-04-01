@@ -1,70 +1,47 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Create cart container
-    const cartContainer = document.createElement('div');
-    cartContainer.className = 'cart-container';
-    
-    // Insert the cart container before the total div
-    const totalDiv = document.querySelector('.total');
-    document.body.insertBefore(cartContainer, totalDiv);
-    
-    // Load and display cart items
+document.addEventListener("DOMContentLoaded", function () {
     loadCartItems();
-    
+
     // Add event listener to the "Proceed to Payment" button
-    const paymentButton = document.querySelector('.sep2 .btn-primary');
+    const paymentButton = document.querySelector('.sep2 button');
     if (paymentButton) {
-        paymentButton.addEventListener('click', function(e) {
+        paymentButton.addEventListener('click', function () {
             const cart = JSON.parse(localStorage.getItem('pokemonCart')) || [];
             if (cart.length === 0) {
-                e.preventDefault();
                 alert('Your cart is empty. Please add items before proceeding to payment.');
+                return;
             }
+
+            // Save cart data to localStorage for the payment page
+            localStorage.setItem('paymentCart', JSON.stringify(cart));
+
+            // Redirect to the payment page
+            window.location.href = 'paymentpage.html';
         });
     }
 });
 
 function loadCartItems() {
-    const cartContainer = document.querySelector('.cart-container');
+    const cartContainer = document.querySelector('.cart-items');
     const cart = JSON.parse(localStorage.getItem('pokemonCart')) || [];
-    
+
     // Clear existing content
     cartContainer.innerHTML = '';
-    
+
     if (cart.length === 0) {
         // Show empty cart message
-        cartContainer.innerHTML = `
-            <div class="empty-cart">
-                <h2>Your cart is empty</h2>
-                <p>Go to the <a href="storepage.html">Store</a> to add some items!</p>
-            </div>
-        `;
+        const emptyCartMessage = document.querySelector('.empty-cart');
+        if (emptyCartMessage) emptyCartMessage.style.display = 'block';
     } else {
-        // Create header for the cart items
-        const cartHeader = document.createElement('div');
-        cartHeader.className = 'cart-header';
-        cartHeader.innerHTML = `
-            <h2>Shopping Cart</h2>
-            <button class="clear-cart-btn">Clear Cart</button>
-        `;
-        cartContainer.appendChild(cartHeader);
-        
-        // Add clear cart functionality
-        const clearCartBtn = cartHeader.querySelector('.clear-cart-btn');
-        clearCartBtn.addEventListener('click', clearCart);
-        
-        // Create list for cart items
-        const cartList = document.createElement('div');
-        cartList.className = 'cart-items';
-        
+        const emptyCartMessage = document.querySelector('.empty-cart');
+        if (emptyCartMessage) emptyCartMessage.style.display = 'none';
+
         // Add each cart item to the list
         cart.forEach(item => {
             const cartItem = createCartItemElement(item);
-            cartList.appendChild(cartItem);
+            cartContainer.appendChild(cartItem);
         });
-        
-        cartContainer.appendChild(cartList);
     }
-    
+
     // Update total price
     updateCartTotal();
 }
@@ -72,12 +49,10 @@ function loadCartItems() {
 function createCartItemElement(item) {
     const cartItem = document.createElement('div');
     cartItem.className = 'cart-item';
-    cartItem.dataset.id = item.id;
-    
-    // Calculate item total price
+
     const price = parseFloat(item.price.replace('₱', '').replace(',', ''));
     const totalPrice = (price * item.quantity).toFixed(2);
-    
+
     cartItem.innerHTML = `
         <div class="item-image">
             <img src="${item.image}" alt="${item.title}">
@@ -96,16 +71,12 @@ function createCartItemElement(item) {
         </div>
         <button class="remove-item">×</button>
     `;
-    
+
     // Add event listeners for quantity buttons
-    const decreaseBtn = cartItem.querySelector('.decrease');
-    const increaseBtn = cartItem.querySelector('.increase');
-    const removeBtn = cartItem.querySelector('.remove-item');
-    
-    decreaseBtn.addEventListener('click', () => updateItemQuantity(item.id, -1));
-    increaseBtn.addEventListener('click', () => updateItemQuantity(item.id, 1));
-    removeBtn.addEventListener('click', () => removeCartItem(item.id));
-    
+    cartItem.querySelector('.decrease').addEventListener('click', () => updateItemQuantity(item.id, -1));
+    cartItem.querySelector('.increase').addEventListener('click', () => updateItemQuantity(item.id, 1));
+    cartItem.querySelector('.remove-item').addEventListener('click', () => removeCartItem(item.id));
+
     return cartItem;
 }
 
@@ -139,26 +110,16 @@ function removeCartItem(itemId) {
     loadCartItems();
 }
 
-function clearCart() {
-    localStorage.setItem('pokemonCart', JSON.stringify([]));
-    loadCartItems();
-}
-
 function updateCartTotal() {
     const cart = JSON.parse(localStorage.getItem('pokemonCart')) || [];
     const totalElement = document.querySelector('.sep1 h1');
-    
+
     if (totalElement) {
-        // Calculate total cart price
         const total = cart.reduce((sum, item) => {
             const price = parseFloat(item.price.replace('₱', '').replace(',', ''));
             return sum + (price * item.quantity);
         }, 0);
-        
-        // Format the total with commas for thousands
-        const formattedTotal = total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        
-        // Update the total display
-        totalElement.textContent = `Total: ₱${formattedTotal}`;
+
+        totalElement.textContent = `Total: ₱${total.toFixed(2)}`;
     }
 }

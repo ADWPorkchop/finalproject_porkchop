@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const transactionsList = document.getElementById('transactionsList');
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
