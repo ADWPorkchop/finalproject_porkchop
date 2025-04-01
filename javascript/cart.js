@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     loadCartItems();
 
-    // Add event listener to the "Proceed to Payment" button
     const paymentButton = document.querySelector('.sep2 button');
     if (paymentButton) {
         paymentButton.addEventListener('click', function () {
@@ -18,31 +17,37 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = 'paymentpage.html';
         });
     }
+
+    const clearCartButton = document.querySelector('.clear-cart-btn');
+    if (clearCartButton) {
+        clearCartButton.addEventListener('click', function () {
+            // Clear the cart
+            localStorage.removeItem('pokemonCart');
+            loadCartItems();
+        });
+    }
 });
 
 function loadCartItems() {
     const cartContainer = document.querySelector('.cart-items');
     const cart = JSON.parse(localStorage.getItem('pokemonCart')) || [];
 
-    // Clear existing content
     cartContainer.innerHTML = '';
 
     if (cart.length === 0) {
-        // Show empty cart message
-        const emptyCartMessage = document.querySelector('.empty-cart');
-        if (emptyCartMessage) emptyCartMessage.style.display = 'block';
+        cartContainer.innerHTML = `
+            <div class="empty-cart">
+                <h2>Your cart is empty</h2>
+                <p>Go to the <a href="storepage.html">Store</a> to add some items!</p>
+            </div>
+        `;
     } else {
-        const emptyCartMessage = document.querySelector('.empty-cart');
-        if (emptyCartMessage) emptyCartMessage.style.display = 'none';
-
-        // Add each cart item to the list
         cart.forEach(item => {
             const cartItem = createCartItemElement(item);
             cartContainer.appendChild(cartItem);
         });
     }
 
-    // Update total price
     updateCartTotal();
 }
 
@@ -66,13 +71,10 @@ function createCartItemElement(item) {
             <span class="quantity-value">${item.quantity}</span>
             <button class="quantity-btn increase">+</button>
         </div>
-        <div class="item-total">
-            ₱${totalPrice}
-        </div>
+        <div class="item-total">₱${totalPrice}</div>
         <button class="remove-item">×</button>
     `;
 
-    // Add event listeners for quantity buttons
     cartItem.querySelector('.decrease').addEventListener('click', () => updateItemQuantity(item.id, -1));
     cartItem.querySelector('.increase').addEventListener('click', () => updateItemQuantity(item.id, 1));
     cartItem.querySelector('.remove-item').addEventListener('click', () => removeCartItem(item.id));
@@ -83,30 +85,23 @@ function createCartItemElement(item) {
 function updateItemQuantity(itemId, change) {
     let cart = JSON.parse(localStorage.getItem('pokemonCart')) || [];
     const itemIndex = cart.findIndex(item => item.id === itemId);
-    
+
     if (itemIndex !== -1) {
-        // Update quantity
         cart[itemIndex].quantity += change;
-        
-        // Remove item if quantity is 0 or less
+
         if (cart[itemIndex].quantity <= 0) {
             cart.splice(itemIndex, 1);
         }
-        
-        // Save updated cart
+
         localStorage.setItem('pokemonCart', JSON.stringify(cart));
-        
-        // Reload cart items
         loadCartItems();
     }
 }
 
 function removeCartItem(itemId) {
     let cart = JSON.parse(localStorage.getItem('pokemonCart')) || [];
-    const updatedCart = cart.filter(item => item.id !== itemId);
-    localStorage.setItem('pokemonCart', JSON.stringify(updatedCart));
-    
-    // Reload cart items
+    cart = cart.filter(item => item.id !== itemId);
+    localStorage.setItem('pokemonCart', JSON.stringify(cart));
     loadCartItems();
 }
 
@@ -114,12 +109,10 @@ function updateCartTotal() {
     const cart = JSON.parse(localStorage.getItem('pokemonCart')) || [];
     const totalElement = document.querySelector('.sep1 h1');
 
-    if (totalElement) {
-        const total = cart.reduce((sum, item) => {
-            const price = parseFloat(item.price.replace('₱', '').replace(',', ''));
-            return sum + (price * item.quantity);
-        }, 0);
+    const total = cart.reduce((sum, item) => {
+        const price = parseFloat(item.price.replace('₱', '').replace(',', ''));
+        return sum + (price * item.quantity);
+    }, 0);
 
-        totalElement.textContent = `Total: ₱${total.toFixed(2)}`;
-    }
+    totalElement.textContent = `Total: ₱${total.toFixed(2)}`;
 }
