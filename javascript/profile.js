@@ -16,6 +16,7 @@ function initProfile() {
     const playerIdEl = document.getElementById('profilePlayerId');
     const emailEl = document.getElementById('profileEmail');
     const birthdayEl = document.getElementById('profileBirthday');
+    const birthdayContainer = document.querySelector('.birthday-container');
     const genderEl = document.getElementById('profileGender');
     const joinDateEl = document.getElementById('joinDate');
     const editAvatarBtn = document.getElementById('editAvatarBtn');
@@ -27,11 +28,9 @@ function initProfile() {
     emailEl.textContent = user.email || 'Not specified';
 
     // Enhanced Birthday Display with Multiple Format Support
-    if (birthdayEl) {
+    if (birthdayEl && birthdayContainer) {
         if (user.birthday) {
             let displayDate = 'Invalid date format';
-            
-            // Try parsing in multiple formats
             const parsedDate = parseBirthday(user.birthday);
             
             if (parsedDate && !isNaN(parsedDate.getTime())) {
@@ -40,23 +39,45 @@ function initProfile() {
                     month: 'long',
                     day: 'numeric'
                 });
+                
+                // Add special styling for valid dates
+                birthdayContainer.classList.add('has-birthday');
+                birthdayEl.classList.add('valid-date');
+                
+                // Add age calculation if desired
+                const age = calculateAge(parsedDate);
+                if (age) {
+                    birthdayEl.dataset.age = age;
+                    birthdayEl.title = `${age} years old`;
+                }
             } else {
                 // Fallback to raw value if parsing fails
                 displayDate = user.birthday;
+                birthdayContainer.classList.add('invalid-format');
             }
             
             birthdayEl.textContent = displayDate;
-        } 
+        } else {
+            // No birthday provided
+            birthdayEl.textContent = 'Not specified';
+            birthdayContainer.classList.add('no-birthday');
+        }
     }
-// In your initProfile() function:
-if (user.gender) {
-    const gender = user.gender.toLowerCase();
-    genderIcon.className = `gender-icon fas ${
-        gender === 'female' ? 'fa-venus' : 'fa-mars'
-    }`;
-} else {
-    genderIcon.className = 'none';
-}
+
+    // Helper function to calculate age from birthday
+    function calculateAge(birthday) {
+        if (!birthday) return null;
+        const today = new Date();
+        let age = today.getFullYear() - birthday.getFullYear();
+        const monthDiff = today.getMonth() - birthday.getMonth();
+        
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+            age--;
+        }
+        
+        return age;
+    }
+
     // Helper function to parse multiple date formats
     function parseBirthday(dateValue) {
         if (!dateValue) return null;
@@ -87,11 +108,14 @@ if (user.gender) {
         return null;
     }
 
-    // Display gender with proper capitalization
-    if (genderEl) {
-        genderEl.textContent = user.gender 
-            ? user.gender.charAt(0).toUpperCase() + user.gender.slice(1).toLowerCase()
-            : 'Not specified';
+    // Display gender with icon
+    if (user.gender) {
+        const gender = user.gender.toLowerCase();
+        genderIcon.className = `gender-icon fas ${
+            gender === 'female' ? 'fa-venus' : 'fa-mars'
+        }`;
+    } else {
+        genderIcon.className = 'none';
     }
 
     // Display join date with formatting
@@ -107,6 +131,7 @@ if (user.gender) {
         console.error('Error formatting join date:', e);
         joinDateEl.textContent = "Date error";
     }
+
     // Set avatar with fallback
     avatarImg.src = user.avatar || 'images/default-avatar.png';
     avatarImg.onerror = function() {
