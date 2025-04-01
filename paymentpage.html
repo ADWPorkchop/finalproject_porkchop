@@ -1,19 +1,18 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Go Store - Payment</title>
+    <title>Porkchop - Payment</title>
     <link rel="stylesheet" href="css/styles-header.css">
     <link rel="stylesheet" href="css/styles-paymentpage.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <a href="homepage.html"></a>
-            <img src="assets/Pokemon_Go.svg.png" alt="Pokémon Go Logo">
-            <span>Web Store</span>
+            <img src="assets/Pokemon_Go.svg.png" alt="Pokémon Logo">
+            <span>Payment</span>
         </div>
         <div class="nav">
             <button class="nav-1" onclick="location.href='storepage.html'">Store</button>
@@ -22,62 +21,119 @@
             <button class="nav-2" onclick="location.href='index.html'">logout</button>
         </div>
     </div>
-    <main>
-        <section class="payment-section">
-            <div class="bundle-summary">
-                <h1 class="description">Choose your payment method and complete your purchase.</h1>
-                <h2>Order Summary</h2>
-                <p>Starter Bundle - ₱00.00</p>
-                <p>Gym Battle Pack - ₱00.00</p>
-                <p class="total"><strong>Total: ₱00.00</strong></p>
+    <div class="longer"></div>
+    
+    <main class="payment-container">
+        <div class="payment-box">
+            <div class="order-summary">
+                <h2><i class="fas fa-receipt"></i> ORDER SUMMARY</h2>
+                <div class="order-items">
+                    <div class="order-item">
+                        <span>Starter Bundle</span>
+                        <span>₱99.00</span>
+                    </div>
+                    <div class="order-item">
+                        <span>Gym Battle Pack</span>
+                        <span>₱249.00</span>
+                    </div>
+                    <div class="order-item">
+                        <span>Tax</span>
+                        <span>₱34.86</span>
+                    </div>
+                </div>
+                <div class="order-total">
+                    <span>TOTAL</span>
+                    <span>₱382.86</span>
+                </div>
             </div>
-            <div class="payment-form">
-                <h2>Select Payment Method</h2>
-                <div class="payment-method">
-                    <label class="payment-option">
-                        <div class="payment-input">
-                            <input type="radio" name="payment" value="gcash">
+
+            <div class="payment-methods">
+                <h2><i class="fas fa-credit-card"></i> PAYMENT METHOD</h2>
+                
+                <div class="payment-options">
+                    <label class="payment-option selected">
+                        <input type="radio" name="payment" value="gcash" checked>
+                        <div class="payment-content">
                             <img src="assets/gcash-logo-.png" alt="GCash">
+                            <span>GCash</span>
                         </div>
-                        GCash
                     </label>
+                    
                     <label class="payment-option">
-                        <div class="payment-input">
-                            <input type="radio" name="payment" value="visa">
+                        <input type="radio" name="payment" value="visa">
+                        <div class="payment-content">
                             <img src="assets/visa-logo-.png" alt="Visa">
+                            <span>Visa</span>
                         </div>
-                        Visa
                     </label>
+                    
                     <label class="payment-option">
-                        <div class="payment-input">
-                            <input type="radio" name="payment" value="paypal">
+                        <input type="radio" name="payment" value="paypal">
+                        <div class="payment-content">
                             <img src="assets/paypal-logo-.png" alt="PayPal">
+                            <span>PayPal</span>
                         </div>
-                        PayPal
                     </label>
-                </div>                
-                <div class="form-group">
-                    <label for="cardNumber">Card Number</label>
-                    <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
                 </div>
-                <div class="form-group">
-                    <label for="cardName">Name on Card</label>
-                    <input type="text" id="cardName" placeholder="Name">
+
+                <div class="payment-details">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <div class="input-with-icon">
+                            <i class="far fa-credit-card"></i>
+                            <input type="text" id="cardNumber" placeholder="#### #### #### ####" maxlength="19">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardName">Name on Card</label>
+                        <div class="input-with-icon">
+                            <i class="far fa-user"></i>
+                            <input type="text" id="cardName" placeholder="Ex. Juan Dela Cruz">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <div class="input-with-icon">
+                                <i class="far fa-calendar-alt"></i>
+                                <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="cvv" placeholder="•••" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="expiryDate">Expiry Date</label>
-                    <input type="text" id="expiryDate" placeholder="MM/YY">
+                
+                <button class="pay-button">
+                    <i class="fas fa-lock"></i> PAY ₱382.86
+                </button>
+                
+                <div class="secure-payment">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure payment encrypted</span>
                 </div>
-                <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" placeholder="XXX">
-                </div>
-                <button class="pay-button">Pay Now</button>
             </div>
-        </section>
+        </div>
     </main>
+
     <footer class="footer">
-        <p>© 2023 Pokémon Go Web Store. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/Porkchop.png" alt="Porkchop Logo">
+                <span>PORKCHOP</span>
+            </div>
+            <div class="footer-disclaimer">
+                <p>Disclaimer: This website is for educational purposes only and no copyright infringement is intended. All images are property of Niantic.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
