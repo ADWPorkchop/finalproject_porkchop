@@ -8,47 +8,50 @@
     <link rel="stylesheet" href="css/styles-footer.css">
 </head>
 <body>
-    <div class="video-container">
-        <video id="myVideo" autoplay loop>
-            <source src="assets/pokemon_trailer.mp4" type="video/mp4">
-        </video>
+    <div class="main-content">
+        <div class="video-container">
+            <video id="myVideo" autoplay loop>
+                <source src="assets/pokemon_trailer.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="wrapper">
+            <h2>Log In</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                </div>
+
+                <div class="spacer"></div>
+
+                <div class="input-box button">
+                    <input type="submit" value="Log In">
+                </div>
+
+                <div class="spacer-2"></div>
+
+                <!-- Social Login Icons -->
+                <div class="text">
+                    <h3>Or Sign Up Using</h3>
+                </div>
+
+                <div class="socimg-container">
+                    <img src="assets/fb.png" alt="Facebook Login">
+                    <img src="assets/instagram.png" alt="Instagram Login">
+                    <img src="assets/twitter.png" alt="Apple Login">
+                </div>
+
+                <div class="spacer-3"></div>
+
+                <div class="text">
+                    <h3>Don't have an account? <a href="register.html">Register now</a></h3>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="wrapper">
-        <h2>Log In</h2>
-        <form action="#">
-            <div class="input-box">
-                <input type="text" placeholder="Username" required>
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="Password" required>
-            </div>
-
-            <div class="spacer"></div>
-
-            <div class="input-box button">
-                <input type="submit" value="Log In">
-            </div>
-
-            <div class="spacer-2"></div>
-
-            <!-- Social Login Icons -->
-            <div class="text">
-                <h3>Or Sign Up Using</h3>
-            </div>
-
-            <div class="socimg-container">
-                <img src="assets/fb.png" alt="Facebook Login">
-                <img src="assets/instagram.png" alt="Instagram Login">
-                <img src="assets/twitter.png" alt="Apple Login">
-            </div>
-
-            <div class="spacer-3"></div>
-
-            <div class="text">
-                <h3>Don't have an account? <a href="register.html">Register now</a></h3>
-            </div>
-        </form>
-    </div>
+    
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">

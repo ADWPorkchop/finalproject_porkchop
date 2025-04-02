@@ -10,9 +10,20 @@
 body {
   min-height: 100vh;
   display: flex;
+  flex-direction: column; /* Changed to column layout */
   align-items: center;
   justify-content: center;
   background: white;
+  position: relative; /* Added position relative */
+  padding-bottom: 100px; /* Added padding to make room for footer */
+}
+
+.main-content {
+  display: flex; /* Added a container for the main content */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
 }
 
 .video-container {
@@ -58,7 +69,6 @@ body {
   background: #4070f4;
 }
 
-
 .wrapper form {
   margin-top: 30px;
 }
@@ -101,7 +111,6 @@ body {
   cursor: pointer;
   transition: transform 0.2s ease;
   border-radius: 50%;
-
 }
 
 .socimg-container img:hover {
@@ -152,4 +161,67 @@ body {
 .spacer-3 {
   height: 45px;
   width: 100%;
+}
+
+/* Footer styles - modified for proper positioning */
+.footer {
+  background: linear-gradient(135deg, var(--porkchop-white), var(--porkchop-white));
+  color: rgb(0, 0, 0);
+  padding: 1.5rem 0;
+  width: 100%;
+  position: absolute; /* Changed to absolute positioning */
+  bottom: 0;
+  left: 0;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo img {
+  height: 35px;
+}
+
+.footer-disclaimer {
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+/* For responsive design */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .video-container {
+    margin-right: 0;
+    margin-bottom: 20px;
+    height: auto;
+    width: 90%;
+  }
+  
+  .video-container video {
+    width: 100%;
+    height: auto;
+  }
+  
+  .wrapper {
+    width: 90%;
+  }
 }
